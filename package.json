@@ -1,0 +1,27 @@
+{
+  "name": "verified-non-fungible-token",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/block-base/verified-non-fungible-token.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/block-base/verified-non-fungible-token/issues"
+  },
+  "homepage": "https://github.com/block-base/verified-non-fungible-token#readme",
+  "dependencies": {
+    "ethereumjs-wallet": "^0.6.2",
+    "fs": "0.0.1-security",
+    "openzeppelin-solidity": "^2.0.0",
+    "truffle-hdwallet-provider": "0.0.6",
+    "web3-utils": "^1.0.0-beta.36"
+  }
+}
