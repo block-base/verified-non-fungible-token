@@ -18,16 +18,13 @@ contract VerifiedNFT is ERC721Full, ClaimVerifier {
         uint8 _mintable,
         uint8 _sendable,
         uint8 _receivable
-    ) ERC721Full (
-        "VerifiedNFT",
-        "VNFT"
     ) ClaimVerifier (
         _claimHolderAddress
     ) public {
         userRegistry = V00_UserRegistry(_userRegistryAddress);
-        mintable;
-        sendable;
-        receivable;
+        mintable = _mintable;
+        sendable = _sendable;
+        receivable = _receivable;
     }    
 
   // Mapping from token ID to approved address
@@ -71,9 +68,8 @@ contract VerifiedNFT is ERC721Full, ClaimVerifier {
    * @param tokenId uint256 ID of the token to be minted by the msg.sender
    */
   function _mint(address to, uint256 tokenId) internal {
-    ClaimHolder _minter = ClaimHolder(userRegistry.users(msg.sender));
-    require(checkClaim(_minter, mintable));   
-    
+    ClaimHolder _minter = ClaimHolder(userRegistry.users(to));
+    require(checkClaim(_minter, mintable));       
     require(to != address(0));
     _addTokenTo(to, tokenId);
     emit Transfer(address(0), to, tokenId);

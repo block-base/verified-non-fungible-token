@@ -1,6 +1,6 @@
 var V00_UserRegistry = artifacts.require("./origin/identity/V00_UserRegistry.sol");
 var ClaimHolder = artifacts.require("./origin/identity/ClaimHolder.sol");
-var VerifiedNFT = artifacts.require("./VerifiedNFT.sol");
+var VerifiedNFT = artifacts.require("./TestVerifiedNFT.sol");
 
 var { writeFileSync } = require('fs')
 var Wallet = require('ethereumjs-wallet');
@@ -19,8 +19,7 @@ module.exports = async function(deployer) {
       var claimHolder = await ClaimHolder.deployed();
       var v00_UserRegistry = await V00_UserRegistry.deployed();
       await claimHolder.addKey(signerKey, 3, 1);
-
-      await deployer.deploy(VerifiedNFT, claimHolder.address, v00_UserRegistry.address, 1, 2, 2);
+      await deployer.deploy(VerifiedNFT, v00_UserRegistry.address, claimHolder.address, 1, 2, 2);
     })
   })
 };
